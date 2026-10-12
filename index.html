@@ -1,0 +1,555 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="TaskNest is your personal productivity planner to organize tasks, manage priorities and achieve daily goals.">
+
+    <meta name="theme-color" content="#6658ed">
+
+    <title>Personal Productivity Planner</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= APP LAYOUT ================= -->
+
+    <div class="app-shell">
+
+        <!-- ================ SIDEBAR ================= -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <a href="#" class="brand" aria-label="TaskNest home">
+                <span class="brand-icon">
+                    <i class="fa-solid fa-check-double"></i>
+                </span>
+
+                <span class="brand-text">
+                    Task<span class="brand-accent">Nest</span>
+                    <small>Small steps. Big goals.</small>
+                </span>
+            </a>
+
+            <div class="side-label">WORKSPACE</div>
+
+            <nav class="side-nav" aria-label="Task navigation">
+
+                <button class="nav-item active" data-filter="all">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>All Tasks</span>
+                    <span class="nav-count" id="allCount">0</span>
+                </button>
+
+                <button class="nav-item" data-filter="today">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span>Today</span>
+                    <span class="nav-count" id="todayCount">0</span>
+                </button>
+
+                <button class="nav-item" data-filter="important">
+                    <i class="fa-regular fa-star"></i>
+                    <span>Important</span>
+                    <span class="nav-count" id="importantCount">0</span>
+                </button>
+
+                <button class="nav-item" data-filter="completed">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <span>Completed</span>
+                    <span class="nav-count" id="completedCount">0</span>
+                </button>
+
+            </nav>
+
+            <!-- Sidebar Motivation Card -->
+
+            <div class="sidebar-note">
+                <img
+                    src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=400&q=80"
+                    alt="Green indoor plant symbolizing growth"
+                    loading="lazy">
+
+                <h3>Keep Growing!</h3>
+
+                <p>
+                    Every small step brings you closer to your goals.
+                    Stay consistent and trust your progress.
+                </p>
+
+                <div class="note-decoration">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+            </div>
+
+            <div class="sidebar-bottom">
+                <span class="online-dot"></span>
+                <span>Tasks saved on this device</span>
+            </div>
+
+        </aside>
+
+
+        <!-- ================ MAIN CONTENT ================= -->
+
+        <main class="main-content">
+
+            <!-- Top Navigation -->
+
+            <header class="topbar">
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    type="button"
+                    aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div class="breadcrumb">
+                    <span>Workspace</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <strong>My Tasks</strong>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <button
+                        class="theme-btn"
+                        id="themeBtn"
+                        type="button"
+                        aria-label="Toggle dark mode"
+                        title="Toggle dark mode">
+                        <i class="fa-regular fa-moon"></i>
+                    </button>
+
+                    <div class="profile-avatar" aria-label="User profile">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- ================= HERO SECTION ================= -->
+
+            <section class="hero">
+
+                <div class="hero-content">
+
+                    <span class="eyebrow">
+                        YOUR PERSONAL PRODUCTIVITY SPACE
+                    </span>
+
+                    <h1 id="greeting">
+                        Make today <span>count.</span>
+                        <span aria-hidden="true">✨</span>
+                    </h1>
+
+                    <p>
+                        Organize your thoughts, focus on what matters
+                        and turn your plans into achievements.
+                    </p>
+
+                    <div class="hero-date">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        <span id="currentDate">Your date</span>
+                    </div>
+
+                    <button
+                        class="primary-btn hero-btn"
+                        id="openFormBtn"
+                        type="button">
+                        <i class="fa-solid fa-plus"></i>
+                        Create a Task
+                    </button>
+
+                </div>
+
+                <div
+                    class="hero-art"
+                    role="img"
+                    aria-label="A bright workspace with a laptop, books and plants">
+
+                    <div class="hero-overlay"></div>
+
+                    <div class="hero-floating-card">
+                        <span class="floating-icon">
+                            <i class="fa-solid fa-bolt"></i>
+                        </span>
+
+                        <div>
+                            <strong>Stay Focused</strong>
+                            <small>One task at a time</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= STATISTICS ================= -->
+
+            <section class="stats-grid" aria-label="Productivity overview">
+
+                <article class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+
+                    <div class="stat-details">
+                        <p>Total Tasks</p>
+                        <h2 id="totalStat">0</h2>
+                        <span>All your plans</span>
+                    </div>
+                </article>
+
+
+                <article class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <div class="stat-details">
+                        <p>Completed</p>
+                        <h2 id="doneStat">0</h2>
+                        <span>Goals achieved</span>
+                    </div>
+                </article>
+
+
+                <article class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-hourglass-half"></i>
+                    </div>
+
+                    <div class="stat-details">
+                        <p>Pending</p>
+                        <h2 id="pendingStat">0</h2>
+                        <span>Ready to tackle</span>
+                    </div>
+                </article>
+
+
+                <article class="stat-card progress-stat">
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+
+                    <div class="stat-details">
+                        <p>Overall Progress</p>
+                        <h2 id="progressStat">0%</h2>
+                        <div class="progress-track">
+                            <div id="progressBar"></div>
+                        </div>
+                    </div>
+                </article>
+
+            </section>
+
+
+            <!-- ================= TASK MANAGEMENT ================= -->
+
+            <section class="task-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-kicker">YOUR DAILY PLAN</span>
+                        <h2>Your Task Board</h2>
+
+                        <p>
+                            Small actions today. Remarkable results tomorrow.
+                        </p>
+                    </div>
+
+                    <button
+                        class="primary-btn"
+                        id="openTaskBtn"
+                        type="button"
+                        onclick="document.getElementById('openFormBtn').click()">
+
+                        <i class="fa-solid fa-plus"></i>
+                        New Task
+
+                    </button>
+
+                </div>
+
+
+                <!-- Add / Edit Task Form -->
+
+                <form class="task-form" id="taskForm" hidden>
+
+                    <div class="form-heading">
+
+                        <div>
+                            <h3 id="formTitle">Create a New Task</h3>
+                            <p>Give your next goal a clear plan.</p>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="close-btn"
+                            id="closeFormBtn"
+                            aria-label="Close form">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="taskTitle">Task Name *</label>
+
+                        <input
+                            type="text"
+                            id="taskTitle"
+                            name="taskTitle"
+                            placeholder="What would you like to accomplish?"
+                            maxlength="100"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="taskDescription">Description</label>
+
+                        <textarea
+                            id="taskDescription"
+                            name="taskDescription"
+                            rows="3"
+                            maxlength="300"
+                            placeholder="Add details, notes or reminders..."></textarea>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="taskDate">Due Date</label>
+
+                            <input
+                                type="date"
+                                id="taskDate"
+                                name="taskDate">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskPriority">Priority Level</label>
+
+                            <select id="taskPriority" name="taskPriority">
+                                <option value="low">Low Priority</option>
+                                <option value="medium" selected>
+                                    Medium Priority
+                                </option>
+                                <option value="high">High Priority</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <label class="important-label" for="taskImportant">
+                        <input
+                            type="checkbox"
+                            id="taskImportant"
+                            name="taskImportant">
+
+                        <span>
+                            <i class="fa-regular fa-star"></i>
+                            Mark this task as important
+                        </span>
+                    </label>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="button"
+                            class="secondary-btn"
+                            id="cancelBtn">
+                            Cancel
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="primary-btn"
+                            id="saveTaskBtn">
+                            <i class="fa-solid fa-check"></i>
+                            Save Task
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+                <!-- Search and Filters -->
+
+                <div class="toolbar">
+
+                    <div class="filter-pills" aria-label="Filter tasks">
+
+                        <button
+                            class="filter-btn active"
+                            type="button"
+                            data-filter="all">
+                            All Tasks
+                        </button>
+
+                        <button
+                            class="filter-btn"
+                            type="button"
+                            data-filter="today">
+                            Today
+                        </button>
+
+                        <button
+                            class="filter-btn"
+                            type="button"
+                            data-filter="important">
+                            <i class="fa-regular fa-star"></i>
+                            Important
+                        </button>
+
+                        <button
+                            class="filter-btn"
+                            type="button"
+                            data-filter="completed">
+                            Completed
+                        </button>
+
+                    </div>
+
+
+                    <label class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Search your tasks..."
+                            aria-label="Search tasks">
+                    </label>
+
+                </div>
+
+
+                <!-- Dynamic Tasks Render Here -->
+
+                <div
+                    class="task-list"
+                    id="taskList"
+                    aria-live="polite">
+                </div>
+
+
+                <!-- Empty State -->
+
+                <div class="empty-state" id="emptyState" hidden>
+
+                    <div class="empty-illustration">
+                        <img
+                            src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=400&q=80"
+                            alt="A green plant representing a fresh start"
+                            loading="lazy">
+                    </div>
+
+                    <h3 id="emptyTitle">A Fresh Start!</h3>
+
+                    <p id="emptyText">
+                        Your task board is ready.
+                        Add your first task to begin.
+                    </p>
+
+                    <button
+                        class="primary-btn"
+                        id="emptyAddBtn"
+                        type="button">
+                        <i class="fa-solid fa-plus"></i>
+                        Create Your First Task
+                    </button>
+
+                </div>
+
+
+                <!-- Task List Footer -->
+
+                <div class="list-footer">
+
+                    <p id="taskSummary">0 tasks</p>
+
+                    <button
+                        type="button"
+                        class="text-btn"
+                        id="clearCompletedBtn">
+                        <i class="fa-regular fa-trash-can"></i>
+                        Clear Completed
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= FOOTER ================= -->
+
+            <footer class="footer">
+
+                <p>
+                    Made with <i class="fa-solid fa-heart"></i>
+                    for your productivity.
+                </p>
+
+                <p>
+                    TaskNest &copy; <span id="footerYear"></span>
+                    <span class="footer-divider">|</span>
+                    Stay focused. Keep growing.
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- Notification Toast -->
+
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite">
+    </div>
+
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
